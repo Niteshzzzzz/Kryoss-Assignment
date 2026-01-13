@@ -2,7 +2,8 @@ import Contact from '../models/Contact.js';
 
 export const getContacts = async (req, res, next) => {
   try {
-    const contacts = await Contact.active().sort({ createdAt: -1 });
+    // const contacts = await Contact.active().sort({ createdAt: -1 });
+    const contacts = await Contact.find({isDeleted: false});
 
     res.status(200).json({
       success: true,
