@@ -1,8 +1,5 @@
 import Contact from '../models/Contact.js';
 
-// @desc    Get all contacts
-// @route   GET /api/contacts
-// @access  Private
 export const getContacts = async (req, res, next) => {
   try {
     const contacts = await Contact.active().sort({ createdAt: -1 });
@@ -18,9 +15,6 @@ export const getContacts = async (req, res, next) => {
   }
 };
 
-// @desc    Get single contact
-// @route   GET /api/contacts/:id
-// @access  Private
 export const getContact = async (req, res, next) => {
   try {
     const contact = await Contact.findById(req.params.id);
@@ -41,9 +35,6 @@ export const getContact = async (req, res, next) => {
   }
 };
 
-// @desc    Create contact
-// @route   POST /api/contacts
-// @access  Private
 export const createContact = async (req, res, next) => {
   try {
     const { name, email, phone, address } = req.body;
@@ -90,9 +81,6 @@ export const createContact = async (req, res, next) => {
   }
 };
 
-// @desc    Update contact
-// @route   PUT /api/contacts/:id
-// @access  Private
 export const updateContact = async (req, res, next) => {
   try {
     let contact = await Contact.findById(req.params.id);
@@ -133,9 +121,6 @@ export const updateContact = async (req, res, next) => {
   }
 };
 
-// @desc    Delete contact (soft delete)
-// @route   DELETE /api/contacts/:id
-// @access  Private
 export const deleteContact = async (req, res, next) => {
   try {
     const contact = await Contact.findById(req.params.id);
@@ -156,9 +141,6 @@ export const deleteContact = async (req, res, next) => {
   }
 };
 
-// @desc    Partial update contact
-// @route   PATCH /api/contacts/:id
-// @access  Private
 export const partialUpdateContact = async (req, res, next) => {
   try {
     let contact = await Contact.findById(req.params.id);
